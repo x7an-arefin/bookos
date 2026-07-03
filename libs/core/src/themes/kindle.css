@@ -1,0 +1,55 @@
+/* kindle.css */
+body {
+  margin: 0 !important;
+  padding: 4% !important;
+  font-family: "Bookerly", "Georgia", serif;
+  background-color: transparent;
+}
+
+p {
+  text-indent: 1.5em;
+  margin: 0;
+  text-align: justify;
+}
+
+/* First paragraph of section has no indentation */
+.book-chapter h1 + p,
+.book-chapter h2 + p,
+.book-chapter h3 + p,
+p.first-p {
+  text-indent: 0;
+}
+
+h1 {
+  page-break-before: always;
+  text-align: center;
+  margin-top: 10%;
+  margin-bottom: 5%;
+}
+
+@media (prefers-color-scheme: dark) {
+  body {
+    color: #e0e0e0;
+  }
+}
+
+@media (prefers-color-scheme: light) {
+  body {
+    color: #111111;
+  }
+}
+
+.book-chapter, .book-frontmatter, .book-backmatter {
+  page-break-inside: auto;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+  margin: 1em auto;
+}
+
+.checkbox-print {
+  font-weight: bold;
+}

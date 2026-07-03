@@ -1,0 +1,3 @@
+INSERT OR IGNORE INTO themes (id, slug, name, description, css_url, config_json, is_premium, created_at) VALUES ('theme-classic-serif', 'classic-serif', 'Classic Serif', 'Traditional book typography using serif fonts. Perfect for literary fiction and non-fiction.', '/themes/classic-serif.css', '{"fontFamily":"Georgia","fontSize":"11pt","lineHeight":"1.6"}', 0, 1751442000000);
+
+INSERT OR IGNORE INTO themes (id, slug, name, description, css_url, config_json, is_premium, created_at) VALUES ('theme-modern-sans', 'modern-sans', 'Modern Sans', 'Clean, contemporary typography for technical writing, business books and memoirs.', '/themes/modern-sans.css', '{"fontFamily":"Inter","fontSize":"10.5pt","lineHeight":"1.5"}', 0, 1751442000000);

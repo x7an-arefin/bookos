@@ -1,0 +1,43 @@
+name = "bookos-api"
+main = "src/index.ts"
+compatibility_date = "2025-07-01"
+compatibility_flags = ["nodejs_compat"]
+
+workers_dev = true
+
+[vars]
+APP_ENV = "development"
+CORS_ORIGIN = "https://bookos-app.pages.dev"
+
+[[d1_databases]]
+binding = "DB"
+database_name = "bookos-db"
+database_id = "db4bd7b5-ba9f-4aa2-b429-2d6351698528"
+
+[[kv_namespaces]]
+binding = "SESSION_KV"
+id = "6d87268e86d64429b3850a1f2c29d9fb"
+
+[[kv_namespaces]]
+binding = "RATE_KV"
+id = "61e72b18638b41afaf021fd7075087d2"
+
+[durable_objects]
+bindings = [
+  { name = "COLLAB_ROOM", class_name = "BookCollabRoom" }
+]
+
+[[migrations]]
+tag = "v1"
+new_sqlite_classes = ["BookCollabRoom"]
+
+[dev]
+port = 8787
+local_protocol = "http"
+
+[build]
+command = ""
+
+# ── Production environment overrides ─────────────────────────────────────────
+[env.production]
+vars = { APP_ENV = "production", CORS_ORIGIN = "https://bookos-app.pages.dev" }

@@ -1,0 +1,59 @@
+appId: com.bookos.desktop
+productName: BookOS
+copyright: Copyright © 2026 BookOS
+
+directories:
+  output: ../../dist/apps/electron-installer
+  buildResources: build-resources
+
+files:
+  - from: ../../dist/apps/electron
+    to: .
+    filter:
+      - "**/*.js"
+      - "**/*.json"
+  - node_modules/**/*
+  - package.json
+
+asar: true
+asarUnpack:
+  - node_modules/sharp/**
+  - node_modules/puppeteer/**
+  - node_modules/better-sqlite3/**
+
+win:
+  target:
+    - target: nsis
+      arch:
+        - x64
+  icon: build-resources/icon.ico
+
+nsis:
+  oneClick: false
+  perMachine: false
+  allowToChangeInstallationDirectory: true
+  createDesktopShortcut: true
+  createStartMenuShortcut: true
+  shortcutName: BookOS
+
+mac:
+  target:
+    - target: dmg
+      arch:
+        - arm64
+        - x64
+  category: public.app-category.productivity
+  icon: build-resources/icon.icns
+
+linux:
+  target:
+    - target: AppImage
+      arch:
+        - x64
+  category: Office
+  icon: build-resources/icons/
+
+publish:
+  provider: github
+  owner: bookos-app
+  repo: bookos-releases

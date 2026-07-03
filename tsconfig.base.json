@@ -14,8 +14,13 @@
     "noImplicitReturns": true,
     "noUnusedLocals": true,
     "skipLibCheck": true,
-    "strict": true,
     "target": "es2022",
-    "customConditions": ["@bookos-temp/source"]
+    "customConditions": ["@bookos-temp/source"],
+    "baseUrl": ".",
+    "paths": {
+      "@bookos/electron-api-types": ["./apps/electron/src/shared/electron-api.types.ts"],
+      "@press/core": ["./libs/core/src/index.ts"]
+    }
   }
 }
+

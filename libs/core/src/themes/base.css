@@ -1,0 +1,143 @@
+/* base.css */
+:root {
+  /* Design Tokens (overwritten dynamically by css-injector.ts) */
+  --font-body: 'Georgia', serif;
+  --font-heading: 'Garamond', serif;
+  --font-size-base: 11pt;
+  --line-height-base: 1.4;
+  --color-text: #333333;
+  --color-heading: #111111;
+  --color-link: #0066cc;
+  --color-bg: #ffffff;
+  
+  --margin-top: 0.75in;
+  --margin-bottom: 0.75in;
+  --margin-inner: 0.875in;
+  --margin-outer: 0.625in;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html, body {
+  margin: 0;
+  padding: 0;
+  font-family: var(--font-body);
+  font-size: var(--font-size-base);
+  line-height: var(--line-height-base);
+  color: var(--color-text);
+  background-color: var(--color-bg);
+  text-rendering: optimizeLegibility;
+}
+
+p {
+  margin: 0 0 1em 0;
+  text-align: justify;
+  text-justify: inter-word;
+}
+
+/* Fiction text indentation: indent subsequent paragraphs, no margin */
+p + p {
+  text-indent: 1.5em;
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-heading);
+  color: var(--color-heading);
+  line-height: 1.2;
+  margin: 1.5em 0 0.5em 0;
+}
+
+h1 { font-size: 2.2em; }
+h2 { font-size: 1.7em; }
+h3 { font-size: 1.3em; }
+h4 { font-size: 1.15em; }
+
+ul, ol {
+  margin: 0 0 1em 1.5em;
+  padding: 0;
+}
+
+li {
+  margin-bottom: 0.25em;
+}
+
+blockquote {
+  margin: 1.5em 2em;
+  padding: 0 1em;
+  border-left: 3px solid #ccc;
+  font-style: italic;
+}
+
+code, pre {
+  font-family: monospace;
+  font-size: 0.9em;
+  background-color: #f4f4f4;
+  padding: 0.1em 0.3em;
+  border-radius: 3px;
+}
+
+pre {
+  display: block;
+  padding: 1em;
+  overflow-x: auto;
+  white-space: pre-wrap;
+}
+
+figure {
+  margin: 1.5em 0;
+  text-align: center;
+}
+
+figcaption {
+  font-size: 0.85em;
+  color: #666;
+  margin-top: 0.5em;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 1.5em 0;
+}
+
+th, td {
+  border: 1px solid #ddd;
+  padding: 0.5em;
+  text-align: left;
+}
+
+th {
+  background-color: #f8f8f8;
+  font-weight: bold;
+}
+
+.book-frontmatter {
+  page: frontmatter-page;
+  width: 100%;
+}
+
+@page frontmatter-page {
+  @top-left { content: none; }
+  @top-right { content: none; }
+  @bottom-center {
+    content: counter(page, lower-roman);
+    font-family: var(--font-body);
+    font-size: 9pt;
+  }
+}
+
+.book-chapter {
+  width: 100%;
+}
+
+.book-chapter:first-of-type {
+  counter-reset: page 1;
+}
+
+.book-backmatter {
+  width: 100%;
+}

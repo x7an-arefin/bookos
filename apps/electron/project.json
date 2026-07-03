@@ -1,0 +1,37 @@
+{
+  "name": "electron",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "projectType": "application",
+  "sourceRoot": "apps/electron/src",
+  "targets": {
+    "build": {
+      "executor": "@nx/js:tsc",
+      "options": {
+        "outputPath": "dist/apps/electron",
+        "main": "apps/electron/src/main/main.ts",
+        "tsConfig": "apps/electron/tsconfig.main.json",
+        "assets": []
+      }
+    },
+    "serve": {
+      "executor": "nx:run-commands",
+      "options": {
+        "command": "concurrently \"npx nx build electron --watch\" \"wait-on dist/apps/electron/main/main.js && electron dist/apps/electron/main/main.js\"",
+        "cwd": "."
+      }
+    },
+    "test": {
+      "executor": "@nx/jest:jest",
+      "options": {
+        "jestConfig": "apps/electron/jest.config.ts"
+      }
+    },
+    "package": {
+      "executor": "nx:run-commands",
+      "options": {
+        "command": "electron-builder build --config apps/electron/electron-builder.yml",
+        "cwd": "."
+      }
+    }
+  }
+}

@@ -1,0 +1,434 @@
+@import "tailwindcss";
+
+/* ═══════════════════════════════════════════════════════════════════════════
+   BookOS — Zard UI Design Token System
+   Dark-first palette: "Deep Press & Ink"
+   ═══════════════════════════════════════════════════════════════════════════ */
+
+@theme {
+
+  /* ── Colour: Brand ─────────────────────────────────────────────────────── */
+  --color-primary:                  oklch(0.58 0.22 241);   /* Ink Blue        */
+  --color-primary-foreground:       oklch(0.99 0.00 0);
+
+  --color-secondary:                oklch(0.20 0.04 241);
+  --color-secondary-foreground:     oklch(0.88 0.02 241);
+
+  --color-accent:                   oklch(0.72 0.14 47);    /* Aged-Paper Gold */
+  --color-accent-foreground:        oklch(0.12 0.02 241);
+
+  --color-destructive:              oklch(0.58 0.22 25);
+  --color-destructive-foreground:   oklch(0.99 0.00 0);
+
+  /* ── Colour: Surface ───────────────────────────────────────────────────── */
+  --color-background:               oklch(0.11 0.02 241);   /* Deep Press Navy */
+  --color-foreground:               oklch(0.93 0.015 90);   /* Warm Off-White  */
+
+  --color-card:                     oklch(0.155 0.025 241);
+  --color-card-foreground:          oklch(0.93 0.015 90);
+
+  --color-popover:                  oklch(0.13 0.025 241);
+  --color-popover-foreground:       oklch(0.93 0.015 90);
+
+  /* ── Colour: Muted / Border ────────────────────────────────────────────── */
+  --color-muted:                    oklch(0.195 0.035 241);
+  --color-muted-foreground:         oklch(0.58 0.04 241);
+  --color-border:                   oklch(0.27 0.04 241);
+  --color-input:                    oklch(0.215 0.04 241);
+  --color-ring:                     oklch(0.58 0.22 241);
+
+  /* ── Colour: Sidebar ───────────────────────────────────────────────────── */
+  --color-sidebar:                  oklch(0.095 0.02 241);
+  --color-sidebar-foreground:       oklch(0.84 0.02 90);
+  --color-sidebar-accent:           oklch(0.175 0.04 241);
+  --color-sidebar-accent-foreground:oklch(0.93 0.015 90);
+  --color-sidebar-border:           oklch(0.20 0.04 241);
+  --color-sidebar-ring:             oklch(0.58 0.22 241);
+
+  /* ── Colour: State ─────────────────────────────────────────────────────── */
+  --color-success:                  oklch(0.70 0.17 150);
+  --color-success-foreground:       oklch(0.99 0.00 0);
+  --color-warning:                  oklch(0.78 0.18 75);
+  --color-warning-foreground:       oklch(0.12 0.02 75);
+  --color-info:                     oklch(0.68 0.18 220);
+  --color-info-foreground:          oklch(0.99 0.00 0);
+
+  /* ── Typography ────────────────────────────────────────────────────────── */
+  --font-sans:    'Inter',           system-ui,   sans-serif;
+  --font-serif:   'Playfair Display', Georgia,    serif;
+  --font-mono:    'JetBrains Mono', 'Cascadia Code', monospace;
+
+  /* ── Border Radius ─────────────────────────────────────────────────────── */
+  --radius-xs:   0.1875rem;
+  --radius-sm:   0.25rem;
+  --radius:      0.375rem;
+  --radius-md:   0.5rem;
+  --radius-lg:   0.75rem;
+  --radius-xl:   1rem;
+  --radius-2xl:  1.5rem;
+  --radius-full: 9999px;
+
+  /* ── Shadows (dark-tuned) ──────────────────────────────────────────────── */
+  --shadow-xs:   0 1px 2px oklch(0 0 0 / 0.35);
+  --shadow-sm:   0 1px 3px oklch(0 0 0 / 0.4), 0 1px 2px oklch(0 0 0 / 0.3);
+  --shadow:      0 4px 6px oklch(0 0 0 / 0.4), 0 2px 4px oklch(0 0 0 / 0.3);
+  --shadow-md:   0 6px 16px oklch(0 0 0 / 0.45);
+  --shadow-lg:   0 12px 32px oklch(0 0 0 / 0.55);
+  --shadow-xl:   0 20px 48px oklch(0 0 0 / 0.65);
+
+  /* ── Transitions ───────────────────────────────────────────────────────── */
+  --ease-spring: cubic-bezier(0.34, 1.56, 0.64, 1);
+  --ease-smooth: cubic-bezier(0.4, 0, 0.2, 1);
+  --ease-out:    cubic-bezier(0, 0, 0.2, 1);
+
+  /* ── Z-index scale ─────────────────────────────────────────────────────── */
+  --z-drawer:   50;
+  --z-overlay:  40;
+  --z-dropdown: 30;
+  --z-tooltip:  20;
+  --z-topbar:   10;
+}
+
+/* ═══════════════════════════════════════════════════════════════════════════
+   Light Mode Token Overrides
+   ═══════════════════════════════════════════════════════════════════════════ */
+.light, html.light {
+  color-scheme: light;
+
+  --color-background:               oklch(0.98 0.005 240);
+  --color-foreground:               oklch(0.14 0.025 241);
+
+  --color-card:                     oklch(1.00 0.00 0);
+  --color-card-foreground:          oklch(0.14 0.025 241);
+
+  --color-popover:                  oklch(1.00 0.00 0);
+  --color-popover-foreground:       oklch(0.14 0.025 241);
+
+  --color-secondary:                oklch(0.93 0.01 241);
+  --color-secondary-foreground:     oklch(0.14 0.025 241);
+
+  --color-muted:                    oklch(0.95 0.008 241);
+  --color-muted-foreground:         oklch(0.46 0.04 241);
+
+  --color-border:                   oklch(0.88 0.015 241);
+  --color-input:                    oklch(0.93 0.008 241);
+
+  --color-sidebar:                  oklch(0.96 0.008 241);
+  --color-sidebar-foreground:       oklch(0.14 0.025 241);
+  --color-sidebar-accent:           oklch(0.90 0.012 241);
+  --color-sidebar-accent-foreground:oklch(0.14 0.025 241);
+  --color-sidebar-border:           oklch(0.88 0.015 241);
+
+  --shadow-xs:   0 1px 2px oklch(0 0 0 / 0.06);
+  --shadow-sm:   0 1px 3px oklch(0 0 0 / 0.08), 0 1px 2px oklch(0 0 0 / 0.06);
+  --shadow:      0 4px 6px oklch(0 0 0 / 0.07), 0 2px 4px oklch(0 0 0 / 0.05);
+  --shadow-md:   0 6px 16px oklch(0 0 0 / 0.09);
+  --shadow-lg:   0 12px 32px oklch(0 0 0 / 0.10);
+  --shadow-xl:   0 20px 48px oklch(0 0 0 / 0.12);
+}
+
+/* ═══════════════════════════════════════════════════════════════════════════
+   Global Base
+   ═══════════════════════════════════════════════════════════════════════════ */
+*, *::before, *::after {
+  box-sizing: border-box;
+  border-color: var(--color-border);
+}
+
+html {
+  font-family:             var(--font-sans);
+  font-feature-settings:   "kern" 1, "liga" 1, "calt" 1;
+  color-scheme:            dark;
+  scroll-behavior:         smooth;
+  text-rendering:          optimizeLegibility;
+  -webkit-text-size-adjust: 100%;
+}
+
+html.light { color-scheme: light; }
+
+body {
+  background-color:          var(--color-background);
+  color:                     var(--color-foreground);
+  line-height:               1.6;
+  -webkit-font-smoothing:    antialiased;
+  -moz-osx-font-smoothing:   grayscale;
+  font-synthesis:            none;
+}
+
+/* ═══════════════════════════════════════════════════════════════════════════
+   Scrollbar
+   ═══════════════════════════════════════════════════════════════════════════ */
+::-webkit-scrollbar          { width: 5px; height: 5px; }
+::-webkit-scrollbar-track    { background: transparent; }
+::-webkit-scrollbar-thumb    { background: var(--color-border); border-radius: var(--radius-full); }
+::-webkit-scrollbar-thumb:hover { background: var(--color-muted-foreground); }
+::-webkit-scrollbar-corner   { background: transparent; }
+
+/* ═══════════════════════════════════════════════════════════════════════════
+   Focus & Selection
+   ═══════════════════════════════════════════════════════════════════════════ */
+:focus-visible {
+  outline:        2px solid var(--color-ring);
+  outline-offset: 2px;
+}
+
+::selection {
+  background-color: oklch(from var(--color-primary) l c h / 0.28);
+  color:            var(--color-foreground);
+}
+
+/* ═══════════════════════════════════════════════════════════════════════════
+   Zard UI: Sonner Toast Theming
+   ═══════════════════════════════════════════════════════════════════════════ */
+[data-sonner-toaster] {
+  --normal-bg:      var(--color-card) !important;
+  --normal-border:  var(--color-border) !important;
+  --normal-text:    var(--color-foreground) !important;
+  --success-bg:     oklch(from var(--color-success) l c h / 0.12) !important;
+  --success-border: oklch(from var(--color-success) l c h / 0.3) !important;
+  --success-text:   var(--color-success) !important;
+  --error-bg:       oklch(from var(--color-destructive) l c h / 0.12) !important;
+  --error-border:   oklch(from var(--color-destructive) l c h / 0.3) !important;
+  --error-text:     var(--color-destructive) !important;
+  --warning-bg:     oklch(from var(--color-warning) l c h / 0.12) !important;
+  --warning-border: oklch(from var(--color-warning) l c h / 0.3) !important;
+  --warning-text:   var(--color-warning) !important;
+  font-family: var(--font-sans) !important;
+  font-size:   0.875rem !important;
+}
+
+[data-sonner-toast] {
+  border-radius: var(--radius-lg) !important;
+  backdrop-filter: blur(8px);
+}
+
+/* ═══════════════════════════════════════════════════════════════════════════
+   Zard UI: View Transition (Angular withViewTransitions)
+   ═══════════════════════════════════════════════════════════════════════════ */
+@keyframes fade-in  { from { opacity: 0; } to { opacity: 1; } }
+@keyframes fade-out { from { opacity: 1; } to { opacity: 0; } }
+@keyframes slide-up { from { transform: translateY(6px); opacity: 0; } to { transform: translateY(0); opacity: 1; } }
+
+::view-transition-old(root) {
+  animation: 120ms var(--ease-smooth) both fade-out;
+}
+::view-transition-new(root) {
+  animation: 180ms var(--ease-smooth) both fade-in;
+}
+
+/* ═══════════════════════════════════════════════════════════════════════════
+   Utility: Component Base Classes
+   (Reused by Zard UI variant files via @apply patterns)
+   ═══════════════════════════════════════════════════════════════════════════ */
+
+/* Glass card effect */
+.glass {
+  background:     oklch(from var(--color-card) l c h / 0.75);
+  backdrop-filter: blur(12px);
+  border:         1px solid oklch(from var(--color-border) l c h / 0.6);
+}
+
+/* Gradient text */
+.gradient-text {
+  background:              linear-gradient(135deg, var(--color-primary), var(--color-accent));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip:         text;
+}
+
+/* Shimmer loading skeleton animation */
+@keyframes shimmer {
+  0%   { background-position: -200% 0; }
+  100% { background-position:  200% 0; }
+}
+
+.skeleton {
+  background: linear-gradient(
+    90deg,
+    var(--color-muted) 25%,
+    oklch(from var(--color-muted-foreground) l c h / 0.15) 50%,
+    var(--color-muted) 75%
+  );
+  background-size: 200% 100%;
+  animation: shimmer 1.6s ease-in-out infinite;
+  border-radius: var(--radius-sm);
+}
+
+/* Subtle gradient surface for hero sections */
+.surface-gradient {
+  background: radial-gradient(
+    ellipse at top left,
+    oklch(from var(--color-primary) l c h / 0.08) 0%,
+    transparent 60%
+  ),
+  radial-gradient(
+    ellipse at bottom right,
+    oklch(from var(--color-accent) l c h / 0.06) 0%,
+    transparent 60%
+  );
+}
+
+/* ═══════════════════════════════════════════════════════════════════════════
+   Zard UI: Input / Form Base
+   ═══════════════════════════════════════════════════════════════════════════ */
+input[type="text"],
+input[type="email"],
+input[type="password"],
+input[type="search"],
+input[type="number"],
+textarea,
+select {
+  background-color: var(--color-input);
+  color:            var(--color-foreground);
+  border:           1px solid var(--color-border);
+  border-radius:    var(--radius-md);
+  font-family:      var(--font-sans);
+  font-size:        0.875rem;
+  transition:       border-color 0.15s var(--ease-smooth), box-shadow 0.15s var(--ease-smooth);
+}
+
+input::placeholder,
+textarea::placeholder {
+  color: var(--color-muted-foreground);
+}
+
+/* ═══════════════════════════════════════════════════════════════════════════
+   Micro-Animations
+   ═══════════════════════════════════════════════════════════════════════════ */
+@keyframes spin-slow { to { transform: rotate(360deg); } }
+@keyframes pulse-soft {
+  0%, 100% { opacity: 1; }
+  50%       { opacity: 0.5; }
+}
+@keyframes bounce-in {
+  0%   { transform: scale(0.9); opacity: 0; }
+  60%  { transform: scale(1.04); opacity: 1; }
+  100% { transform: scale(1); }
+}
+@keyframes slide-in-left {
+  from { transform: translateX(-100%); opacity: 0; }
+  to   { transform: translateX(0);     opacity: 1; }
+}
+
+.animate-spin-slow   { animation: spin-slow 3s linear infinite; }
+.animate-pulse-soft  { animation: pulse-soft 2s ease-in-out infinite; }
+.animate-bounce-in   { animation: bounce-in 0.35s var(--ease-spring) both; }
+.animate-slide-in-left { animation: slide-in-left 0.3s var(--ease-smooth) both; }
+
+/* ═══════════════════════════════════════════════════════════════════════════
+   Zard UI: Progress Bar
+   ═══════════════════════════════════════════════════════════════════════════ */
+.progress-bar-track {
+  height:           6px;
+  border-radius:    var(--radius-full);
+  background:       var(--color-muted);
+  overflow:         hidden;
+}
+
+.progress-bar-fill {
+  height:           100%;
+  border-radius:    var(--radius-full);
+  background:       linear-gradient(90deg, var(--color-primary), var(--color-accent));
+  transition:       width 0.3s var(--ease-smooth);
+}
+
+/* Indeterminate progress */
+@keyframes progress-indeterminate {
+  0%   { transform: translateX(-100%) scaleX(0.5); }
+  50%  { transform: translateX(0)     scaleX(1); }
+  100% { transform: translateX(100%)  scaleX(0.5); }
+}
+
+.progress-bar-fill.indeterminate {
+  animation: progress-indeterminate 1.4s var(--ease-smooth) infinite;
+}
+
+/* ═══════════════════════════════════════════════════════════════════════════
+   Zard UI: Badge variants
+   ═══════════════════════════════════════════════════════════════════════════ */
+.badge-success  { background: oklch(from var(--color-success) l c h / 0.15);  color: var(--color-success); }
+.badge-warning  { background: oklch(from var(--color-warning) l c h / 0.15);  color: var(--color-warning); }
+.badge-info     { background: oklch(from var(--color-info) l c h / 0.15);     color: var(--color-info); }
+.badge-error    { background: oklch(from var(--color-destructive) l c h / 0.15); color: var(--color-destructive); }
+
+/* ═══════════════════════════════════════════════════════════════════════════
+   Zard UI: Tooltip
+   ═══════════════════════════════════════════════════════════════════════════ */
+[data-tooltip] {
+  position: relative;
+}
+
+[data-tooltip]::after {
+  content:          attr(data-tooltip);
+  position:         absolute;
+  bottom:           calc(100% + 6px);
+  left:             50%;
+  transform:        translateX(-50%);
+  padding:          0.25rem 0.5rem;
+  background:       var(--color-popover);
+  color:            var(--color-popover-foreground);
+  font-size:        0.75rem;
+  white-space:      nowrap;
+  border-radius:    var(--radius-sm);
+  border:           1px solid var(--color-border);
+  box-shadow:       var(--shadow-sm);
+  pointer-events:   none;
+  opacity:          0;
+  transition:       opacity 0.15s var(--ease-smooth);
+  z-index:          var(--z-tooltip);
+}
+
+[data-tooltip]:hover::after { opacity: 1; }
+
+/* ═══════════════════════════════════════════════════════════════════════════
+   Zard UI: Dialog / Modal backdrop
+   ═══════════════════════════════════════════════════════════════════════════ */
+.dialog-backdrop {
+  background:     oklch(0 0 0 / 0.65);
+  backdrop-filter: blur(4px);
+}
+
+/* ═══════════════════════════════════════════════════════════════════════════
+   Zard UI: Book-Typography Prose (preview pane & editor)
+   ═══════════════════════════════════════════════════════════════════════════ */
+.book-prose {
+  font-family:  var(--font-serif);
+  font-size:    1rem;
+  line-height:  1.85;
+  color:        var(--color-foreground);
+}
+
+.book-prose h1 { font-size: 2rem; font-weight: 700; margin: 2rem 0 0.75rem; }
+.book-prose h2 { font-size: 1.5rem; font-weight: 600; margin: 1.5rem 0 0.5rem; }
+.book-prose h3 { font-size: 1.2rem; font-weight: 600; margin: 1.25rem 0 0.5rem; }
+.book-prose p  { margin: 0 0 1rem; }
+.book-prose p + p { text-indent: 1.5em; margin-top: -0.5rem; }
+.book-prose blockquote {
+  border-left: 3px solid var(--color-accent);
+  padding:     0.5rem 0 0.5rem 1.25rem;
+  margin:      1.5rem 0;
+  color:       var(--color-muted-foreground);
+  font-style:  italic;
+}
+.book-prose hr {
+  border:      none;
+  text-align:  center;
+  margin:      2.5rem 0;
+  color:       var(--color-muted-foreground);
+  font-size:   1.25rem;
+  letter-spacing: 0.5em;
+}
+.book-prose hr::before { content: '✦  ✦  ✦'; }
+.book-prose ul, .book-prose ol { padding-left: 1.75rem; margin: 0.5rem 0 1rem; }
+.book-prose li { margin-bottom: 0.3rem; }
+
+/* Drop cap (first paragraph of chapter) */
+.book-prose.drop-cap > p:first-of-type::first-letter {
+  float:        left;
+  font-size:    3.5rem;
+  font-weight:  700;
+  line-height:  0.8;
+  margin:       0.1em 0.08em 0 0;
+  color:        var(--color-primary);
+  font-family:  var(--font-serif);
+}

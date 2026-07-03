@@ -1,0 +1,146 @@
+{
+  "id": "sample-book-project-uuid",
+  "meta": {
+    "title": "BookOS Sample Manual",
+    "author": "Jane Doe",
+    "publisher": "BookOS Press",
+    "language": "en",
+    "isbn": "978-3-16-148410-0",
+    "publicationDate": "2026-06-30"
+  },
+  "config": {
+    "global": {
+      "pageSize": "6in 9in",
+      "baseFont": "open-sans-mock.ttf"
+    },
+    "targets": {
+      "pdf-trade": {
+        "pageSize": "6in 9in",
+        "margins": {
+          "top": "0.75in",
+          "bottom": "0.75in",
+          "inner": "0.75in",
+          "outer": "0.75in"
+        },
+        "baseFont": "open-sans-mock.ttf",
+        "baseFontSize": "11pt",
+        "headingFont": "open-sans-mock.ttf",
+        "baseLineHeight": 1.4,
+        "runningHeaders": true,
+        "suppressHeadersOnChapterOpen": true,
+        "dropCaps": true,
+        "hyphenation": true,
+        "chapterStartsOnRightPage": true,
+        "includeTOC": true,
+        "includeISBNBarcode": true,
+        "printBleed": true
+      },
+      "epub-standard": {
+        "pageSize": "6in 9in",
+        "margins": {
+          "top": "15px",
+          "bottom": "15px",
+          "inner": "15px",
+          "outer": "15px"
+        },
+        "baseFont": "open-sans-mock.ttf",
+        "baseFontSize": "12pt",
+        "headingFont": "open-sans-mock.ttf",
+        "baseLineHeight": 1.5,
+        "runningHeaders": false,
+        "suppressHeadersOnChapterOpen": false,
+        "dropCaps": false,
+        "hyphenation": false,
+        "chapterStartsOnRightPage": false,
+        "includeTOC": true,
+        "includeISBNBarcode": false,
+        "printBleed": false
+      }
+    },
+    "activeTheme": "default"
+  },
+  "frontMatterSections": [
+    {
+      "id": "fm-1",
+      "title": "Copyright Page",
+      "sortOrder": 1,
+      "contentMarkdown": "---\ntype: frontmatter\n---\n# Copyright Page\n\nCopyright © 2026 BookOS. All rights reserved.\nNo part of this publication may be reproduced or transmitted in any form.",
+      "frontMatter": {
+        "type": "frontmatter"
+      },
+      "lastModified": "2026-06-30T13:00:00Z"
+    }
+  ],
+  "chapters": [
+    {
+      "id": "ch-1",
+      "title": "Introduction",
+      "sortOrder": 2,
+      "contentMarkdown": "# Introduction\n\nWelcome to the digital publishing age. This project demonstrates the capabilities of BookOS, a modern publication typesetting engine designed from the ground up to render beautiful books across different platforms. Using standard Markdown sources, designers can customize layout rules, font mappings, and print bleed parameters, and preview results directly.\n\nThe engine targets two main outputs:\n1. Print-ready PDF documents using Paged.js.\n2. Reflowable EPUB books using standardized container structures.\n\nPublishing has historically been an industry with extremely high barriers to entry. Designers and authors spent thousands of dollars on complex layout applications, only to find themselves locked into closed formats that do not scale well. By leveraging open standards like HTML5, CSS Page Media, and clean AST-based markdown pipelines, we build an open future.\n\n> Typesetting is the craft of placing type in a layout to make written language legible, readable, and appealing when displayed. The arrangement of type involves selecting typefaces, point sizes, line lengths, line-spacing, and letter-spacing.\n\nHere is a simple example of how you can build books programmatically:\n\n```typescript\nimport { buildBook } from '@press/core';\n\nconst result = await buildBook({\n  project,\n  target: 'pdf-trade',\n  outputDir: './dist'\n});\nconsole.log(`Book built at: ${result.outputPath}`);\n```\n\nWe hope this tool empowers independent authors and small publishers to create works that rival the visual excellence of legacy printing presses. Every paragraph, page break, and margin box has been meticulously styled to ensure maximum visual harmony. Enjoy the design process!",
+      "lastModified": "2026-06-30T13:00:00Z"
+    },
+    {
+      "id": "ch-2",
+      "title": "Chapter One: Designing Layouts",
+      "sortOrder": 3,
+      "contentMarkdown": "# Chapter One: Designing Layouts\n\nTypesetting books requires a deep understanding of negative space and proportions. Designers must consider margins, line height, font choice, and how sections flow together. A book layout is not just a container for text; it is an active participant in the reading experience.\n\nWhen a reader opens a book, their eyes should naturally land on the top of the page. The margin configuration (inner, outer, top, and bottom) sets the tone. Inner margins must be wider to account for the gutter in printed binding, while outer margins provide space for the thumbs.\n\nHere is a visual representation of standard target dimensions:\n\n| Dimension | Standard Size | Purpose |\n| --- | --- | --- |\n| Trim Size | 6in × 9in | Standard trade paperback size |\n| Gutter Margin | 0.75in | Binding space allowances |\n| Font Size | 10.5pt | Optimal text legibility |\n| Line Spacing | 14pt | Comfortable reading rhythm |\n\nTo insert an illustration, we use markdown references:\n\n![Sample Image](sample-300dpi.png)\n\nEvery image must be processed through the optimizer to verify it complies with resolution benchmarks [^1]. If an image has low resolution, the validator logs warnings to prevent blurry print output.\n\n[^1]: Image resolution is measured in dots per inch (DPI). For printing, 300 DPI is standard.\n\nDesigning for screen display requires a different approach. Digital readers prefer reflowable text where margins are thin and text scales dynamically. In these environments, we strip out print-specific parameters (like crop marks and page numbers) to allow screens to render the book correctly.\n\nA well-crafted layout makes the interface disappear, allowing the reader to immerse themselves fully in the author's world. To learn more about modern layout design, visit the [BookOS Homepage](https://github.com/google-deepmind/bookos).",
+      "lastModified": "2026-06-30T13:00:00Z"
+    },
+    {
+      "id": "ch-3",
+      "title": "Chapter Two: Global Standards",
+      "sortOrder": 4,
+      "contentMarkdown": "# Chapter Two: Global Standards\n\nIn modern publishing, support for international typography and bidirectionality is crucial. The BookOS rendering engine is designed to support multi-lingual texts, including right-to-left layout constraints.\n\nFor instance, when typesetting bilingual materials, we ensure that Arabic script renders with proper directional attributes:\n\n> الملاحة في الفضاء هي علم وتكنولوجيا توجيه المركبات الفضائية خارج الغلاف الجوي للأرض. يتطلب هذا العلم حسابات دقيقة للمسارات والتحكم في الدفع لضمان وصول المركبة إلى وجهتها بسلام.\n\nBidirectional rendering (Bidi) requires fonts that contain the correct glyph mappings. Without them, characters may render out of sequence or as empty boxes. The validator scans your book text and checks that the selected font file supports all characters utilized in your manuscript.\n\nHere is a checklist of internationalization requirements:\n- [x] Bidirectional text ordering (LTR / RTL support)\n- [x] Custom language overrides at the chapter level\n- [x] Multi-lingual font inspection and glyph coverage\n- [x] Hyphenation rules for European languages\n\nBy adhering to these international guidelines, we ensure that literature from all cultures can be presented with the highest level of typographic quality.",
+      "lastModified": "2026-06-30T13:00:00Z"
+    }
+  ],
+  "backMatterSections": [
+    {
+      "id": "bm-1",
+      "title": "About the Author",
+      "sortOrder": 5,
+      "contentMarkdown": "# About the Author\n\nJane Doe is an author, typographer, and software developer. She has spent over a decade building tools for writers and publishers. When she is not coding layout engines, she enjoys reading historical biographies and hiking in the mountains.",
+      "lastModified": "2026-06-30T13:00:00Z"
+    }
+  ],
+  "assets": [
+    {
+      "id": "asset-img-1",
+      "filename": "sample-300dpi.png",
+      "localPath": "images/sample-300dpi.png",
+      "mimeType": "image/png",
+      "sizeBytes": 3200
+    },
+    {
+      "id": "asset-img-2",
+      "filename": "sample-72dpi.jpg",
+      "localPath": "images/sample-72dpi.jpg",
+      "mimeType": "image/jpeg",
+      "sizeBytes": 2800
+    },
+    {
+      "id": "asset-img-cover",
+      "filename": "sample-cover.jpg",
+      "localPath": "images/sample-cover.jpg",
+      "mimeType": "image/jpeg",
+      "sizeBytes": 8500
+    },
+    {
+      "id": "asset-font-1",
+      "filename": "open-sans-mock.ttf",
+      "localPath": "fonts/open-sans-mock.ttf",
+      "mimeType": "font/ttf",
+      "sizeBytes": 45000
+    },
+    {
+      "id": "asset-font-2",
+      "filename": "restricted-mock.ttf",
+      "localPath": "fonts/restricted-mock.ttf",
+      "mimeType": "font/ttf",
+      "sizeBytes": 45000
+    }
+  ],
+  "exportHistory": [],
+  "createdAt": "2026-06-30T13:00:00Z",
+  "updatedAt": "2026-06-30T13:00:00Z"
+}

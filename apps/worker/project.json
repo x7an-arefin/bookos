@@ -1,0 +1,50 @@
+{
+  "name": "worker",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "projectType": "application",
+  "sourceRoot": "apps/worker/src",
+  "targets": {
+    "dev": {
+      "executor": "nx:run-commands",
+      "options": {
+        "command": "npx wrangler dev --local",
+        "cwd": "apps/worker"
+      }
+    },
+    "deploy": {
+      "executor": "nx:run-commands",
+      "options": {
+        "command": "npx wrangler deploy",
+        "cwd": "apps/worker"
+      }
+    },
+    "test": {
+      "executor": "nx:run-commands",
+      "options": {
+        "command": "npx vitest run",
+        "cwd": "apps/worker"
+      }
+    },
+    "db:generate": {
+      "executor": "nx:run-commands",
+      "options": {
+        "command": "npx drizzle-kit generate",
+        "cwd": "apps/worker"
+      }
+    },
+    "db:migrate:local": {
+      "executor": "nx:run-commands",
+      "options": {
+        "command": "npx wrangler d1 migrations apply bookos-db --local",
+        "cwd": "apps/worker"
+      }
+    },
+    "db:migrate:prod": {
+      "executor": "nx:run-commands",
+      "options": {
+        "command": "npx wrangler d1 migrations apply bookos-db",
+        "cwd": "apps/worker"
+      }
+    }
+  }
+}

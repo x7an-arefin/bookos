@@ -1,0 +1,70 @@
+/* epub-standard.css */
+body {
+  padding: 5% !important;
+  font-family: var(--font-body), serif;
+  background-color: transparent;
+}
+
+p {
+  text-indent: 1.5em;
+  margin: 0;
+  text-align: justify;
+}
+
+.book-chapter h1 + p,
+.book-chapter h2 + p,
+.book-chapter h3 + p,
+p.first-p {
+  text-indent: 0;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-heading), serif;
+  page-break-inside: avoid;
+}
+
+h1 {
+  page-break-before: always;
+  text-align: center;
+  margin-top: 1.5em;
+  margin-bottom: 1em;
+}
+
+@media (prefers-color-scheme: dark) {
+  body {
+    color: #e0e0e0;
+  }
+}
+
+@media (prefers-color-scheme: light) {
+  body {
+    color: #111111;
+  }
+}
+
+figure, img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+  margin: 1em auto;
+}
+
+/* EPUB 3 Footnote styling rules */
+a[epub\:type="noteref"] {
+  text-decoration: none;
+  font-size: 0.8em;
+  vertical-align: super;
+  line-height: 0;
+}
+
+aside[epub\:type="footnote"] {
+  font-size: 0.9em;
+  margin-top: 0.5em;
+  padding: 0.5em;
+}
+
+.footnotes {
+  margin-top: 2em;
+  padding-top: 1em;
+  border-top: 1px solid #ccc;
+}

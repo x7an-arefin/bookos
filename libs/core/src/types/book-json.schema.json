@@ -1,0 +1,140 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "BookOS Project Config Schema",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string"
+    },
+    "meta": {
+      "type": "object",
+      "properties": {
+        "title": { "type": "string", "minLength": 1 },
+        "author": { "type": "string", "minLength": 1 },
+        "subtitle": { "type": "string" },
+        "publisher": { "type": "string" },
+        "isbn": { "type": "string" },
+        "language": { "type": "string", "default": "en" },
+        "description": { "type": "string" },
+        "genre": { "type": "string" },
+        "publicationDate": { "type": "string" }
+      },
+      "required": ["title", "author", "language"]
+    },
+    "config": {
+      "type": "object",
+      "properties": {
+        "global": {
+          "$ref": "#/definitions/layoutTarget"
+        },
+        "targets": {
+          "type": "object",
+          "additionalProperties": {
+            "$ref": "#/definitions/layoutTarget"
+          }
+        },
+        "activeTheme": { "type": "string" }
+      },
+      "required": ["global", "targets", "activeTheme"]
+    },
+    "frontMatterSections": {
+      "type": "array",
+      "items": { "$ref": "#/definitions/chapterRef" }
+    },
+    "chapters": {
+      "type": "array",
+      "items": { "$ref": "#/definitions/chapterRef" }
+    },
+    "backMatterSections": {
+      "type": "array",
+      "items": { "$ref": "#/definitions/chapterRef" }
+    },
+    "assets": {
+      "type": "array",
+      "items": { "$ref": "#/definitions/bookAsset" }
+    },
+    "exportHistory": {
+      "type": "array",
+      "items": { "$ref": "#/definitions/exportRecord" }
+    },
+    "createdAt": { "type": "string" },
+    "updatedAt": { "type": "string" }
+  },
+  "required": ["id", "meta", "config"],
+  "definitions": {
+    "marginConfig": {
+      "type": "object",
+      "properties": {
+        "top": { "type": "string" },
+        "bottom": { "type": "string" },
+        "inner": { "type": "string" },
+        "outer": { "type": "string" }
+      },
+      "required": ["top", "bottom", "inner", "outer"]
+    },
+    "layoutTarget": {
+      "type": "object",
+      "properties": {
+        "pageSize": { "type": "string" },
+        "margins": { "$ref": "#/definitions/marginConfig" },
+        "baseFont": { "type": "string" },
+        "baseFontSize": { "type": "string" },
+        "headingFont": { "type": "string" },
+        "baseLineHeight": { "type": "number" },
+        "runningHeaders": { "type": "boolean" },
+        "suppressHeadersOnChapterOpen": { "type": "boolean" },
+        "dropCaps": { "type": "boolean" },
+        "hyphenation": { "type": "boolean" },
+        "chapterStartsOnRightPage": { "type": "boolean" },
+        "includeTOC": { "type": "boolean" },
+        "includeISBNBarcode": { "type": "boolean" },
+        "printBleed": { "type": "boolean" }
+      }
+    },
+    "chapterRef": {
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "title": { "type": "string" },
+        "sortOrder": { "type": "integer" },
+        "lastModified": { "type": "string" },
+        "frontMatter": {
+          "type": "object",
+          "properties": {
+            "type": { "type": "string", "enum": ["normal", "part-opener", "frontmatter", "backmatter"] },
+            "suppressRunningHeaders": { "type": "boolean" },
+            "author": { "type": "string" },
+            "lang": { "type": "string" },
+            "pageNumberStyle": { "type": "string", "enum": ["arabic", "roman", "none"] },
+            "dropCap": { "type": "boolean" }
+          }
+        }
+      },
+      "required": ["id", "title", "sortOrder"]
+    },
+    "bookAsset": {
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "filename": { "type": "string" },
+        "localPath": { "type": "string" },
+        "cloudUrl": { "type": "string" },
+        "mimeType": { "type": "string" },
+        "sizeBytes": { "type": "integer" }
+      },
+      "required": ["id", "filename", "localPath", "mimeType", "sizeBytes"]
+    },
+    "exportRecord": {
+      "type": "object",
+      "properties": {
+        "target": { "type": "string" },
+        "format": { "type": "string", "enum": ["pdf", "epub"] },
+        "completedAt": { "type": "string" },
+        "outputPath": { "type": "string" },
+        "fileSizeBytes": { "type": "integer" },
+        "pageCount": { "type": "integer" }
+      },
+      "required": ["target", "format", "completedAt", "outputPath", "fileSizeBytes"]
+    }
+  }
+}

@@ -1,0 +1,104 @@
+/* print-a4.css */
+@page {
+  size: A4;
+  margin-top: 25mm;
+  margin-bottom: 25mm;
+  margin-left: 25mm;  /* inner */
+  margin-right: 20mm; /* outer */
+  marks: crop cross;
+  bleed: 3.175mm; /* 0.125in */
+  
+  @bottom-center {
+    content: counter(page);
+    font-family: var(--font-body);
+    font-size: 10pt;
+  }
+}
+
+:root {
+  --font-size-base: 12pt;
+}
+
+.book-chapter {
+  page: chapter-page;
+  break-before: page;
+}
+
+@page chapter-page {
+  @top-left {
+    content: var(--author-name);
+    font-family: var(--font-body);
+    font-size: 9pt;
+    font-style: italic;
+  }
+  @top-right {
+    content: string(chapter-title);
+    font-family: var(--font-body);
+    font-size: 9pt;
+    font-style: italic;
+  }
+}
+
+@page chapter-page:first {
+  @top-left {
+    content: none;
+  }
+  @top-right {
+    content: none;
+  }
+}
+
+p {
+  orphans: 3;
+  widows: 3;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  break-after: avoid;
+}
+
+pre, code, blockquote, figure, table {
+  break-inside: avoid;
+}
+
+.book-chapter h1 {
+  margin-top: 40mm;
+  margin-bottom: 25mm;
+  text-align: center;
+  font-size: 2.6em;
+  string-set: chapter-title content();
+}
+
+.drop-cap {
+  initial-letter: 3;
+  font-weight: bold;
+  margin-right: 0.15em;
+}
+
+.footnote {
+  float: footnote;
+}
+
+@page {
+  @footnote {
+    border-top: 1px solid black;
+    margin-top: 10px;
+    padding-top: 5px;
+    font-size: 9.5pt;
+    line-height: 1.2;
+  }
+}
+
+.page-break-insert {
+  break-before: page;
+}
+
+.checkbox-print {
+  font-family: monospace;
+  font-size: 1.2em;
+}
+
+.two-column {
+  column-count: 2;
+  column-gap: 1.5em;
+}
